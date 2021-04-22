@@ -1,0 +1,64 @@
+{% load static %}
+<footer class="section footer noover">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <div class="widget clearfix">
+                    <h3 class="widget-title">Contact Us</h3>
+                    <address>
+                        <p>#30 abc Colony, xyz City AZ <i class="fa fa-map-marker" ></i></p>
+                        <a href="mailto:xebertimes@gmail.com"> xebertimes@gmail.com - <i class="fa fa-paper-plane" ></i></a>
+                        <br>
+                        <a href="tel:+994703580068">+994 70 358 00 68 - <i class="fa fa-phone" ></i></a>
+                    </address>
+                    <div class="social-footer-icons">
+                        <ul class="menu simple">
+                            <li><a target="_blank" href="https://www.facebook.com/">Facebook - <i class="fa fa-facebook"></i></a></li>
+                            <li><a target="_blank" href="https://www.instagram.com/?hl=en">Instagram - <i class="fa fa-instagram" ></i></a>
+                            </li>
+                            <li><a target="_blank" href="https://www.pinterest.com/">Pinterest - <i class="fa fa-pinterest-p" ></i></a></li>
+                            <li><a target="_blank" href="https://twitter.com/?lang=en">Twitter - <i class="fa fa-twitter" ></i></a></li>
+                        </ul>
+                    </div>
+                </div><!-- end widget -->
+            </div><!-- end col -->
+
+
+
+            <div class="col-lg-4 col-md-4">
+                <div class="widget clearfix">
+                    <h3 class="widget-title">Popular Categories</h3>
+                    <div class="tags-widget">
+                        <ul class="list-inline">
+                            {% for category in categories %}
+                            <li><a href="{% url 'news_by_category' category.slug %}">{% if category.slug in request.path %} <b style="color: black;">{{category.name}}</b>{% else %}{{category.name}}{% endif %}</a></li>
+                            {% endfor %}
+                            
+                        </ul>
+                    </div><!-- end list-widget -->
+                </div><!-- end widget -->
+            </div><!-- end col -->
+
+            <div class="col-lg-3 col-md-3">
+                <div class="widget clearfix">
+                    <h3 class="widget-title">Support</h3>
+                    <div class="list-widget">
+                        <ul>
+                            <li><a href="#">Terms of Use</a></li>
+                            <li><a href="#">Copyrights</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Cookies</a></li>
+                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                            <li><a href="#">Advertise with Us</a></li>
+                        </ul>
+                    </div><!-- end list-widget -->
+                </div><!-- end widget -->
+            </div><!-- end col -->
+
+        </div><!-- end row -->
+        <div class="social-footer-left">
+
+        </div>
+        
+    </div><!-- end container -->
+</footer><!-- end footer -->

@@ -1,0 +1,101 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="section db p120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="tagline-message page-title text-center">
+                            <h3>Get In Touch</h3>
+                            <ul class="breadcrumb">
+                                <li><a href="javascript:void(0)">Edulogy</a></li>
+                                <li class="active">Get in touch</li>
+                            </ul>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section><!-- end section -->
+
+        <section class="section gb nopadtop">
+            <div class="container">
+                <div class="boxed boxedp4">
+
+                    <div id="map" class="wow slideInUp"></div>
+
+                    <div class="row contactv2 text-center">
+                        <div class="col-md-4">
+                            <div class="small-box">
+                                <i class="flaticon-email wow fadeIn"></i>
+                                <h4>Contact us today</h4>
+                                <small>Phone: +994 70 358 00 68</small>
+                                <small>Fax:  +994 70 358 00 68</small>
+                                <p><a href="mail:to">xebertimes@gmail.com</a></p>
+                            </div><!-- end small-box -->
+                        </div><!-- end col -->
+
+                        <div class="col-md-4">
+                            <div class="small-box">
+                                <i class="flaticon-map-with-position-marker wow fadeIn"></i>
+                                <h4>Visit Our Office</h4>
+                                <small>Azerbaijan,Nakhchivan AR</small>
+                                <small>Sharur City</small>
+                                <p><a target="_blank" href="https://www.google.com/maps/place/%C5%9E%C9%99rur/data=!4m2!3m1!1s0x401501675ab78f01:0x1182b6392cb15778?sa=X&ved=2ahUKEwiSlaG7yf7vAhUq_rsIHelhCxYQ8gEwAHoECAcQAQ">View on Google Map</a></p>
+                            </div><!-- end small-box -->
+                        </div><!-- end col -->
+
+                        <div class="col-md-4">
+                            <div class="small-box">
+                                <i class="flaticon-share wow fadeIn"></i>
+                                <h4>Be Social</h4>
+                                <small>Twitter: @fardizeynalov</small>
+                                <small>Instagram:instagram.com/ferdi.zeynalov</small>
+                                <p><a target="_blank" href="https://www.instagram.com/ferdi.zeynalov/">Go To Instagram</a></p>
+                            </div><!-- end small-box -->
+                        </div><!-- end col -->
+                    </div><!-- end contactv2 -->
+
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="section-title text-center">
+                                <h3>Contact Form</h3>
+                                <p>Teklif ve iradlariniz ucun zehmet olmasa asagidaki formu doldurun!</p>
+                            </div><!-- end title -->
+
+                                {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{message.tags}}">
+                                        {{message}}
+                                    </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                            <form action="" method="POST" class="big-contact-form">
+                                {% csrf_token %}
+                                <div>
+                                    {{form.name}}
+                                </div>
+                                <div>
+                                    {{form.email}}
+                                </div>
+                                <div>
+                                    {{form.phone}}
+                                </div>
+                                <div>
+                                    {{form.subject}}
+                                </div>
+                                <div>
+                                    {{form.message}}
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div>
+        </section>
+
+        
+
+    {% endblock %}

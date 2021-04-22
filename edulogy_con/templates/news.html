@@ -1,0 +1,104 @@
+{% extends 'partials/_base.html' %}
+{% load static %}
+{% block content %}
+
+        <section class="section db p120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="margin-top: 60px;" class="tagline-message page-title text-center">
+                            <h3>Blog & News</h3>
+                            <ul class="breadcrumb">
+                                <li class="blue1">Xeber Times</li>
+                                <li class="active">News</li>
+                            </ul>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+                <div class="row">
+                    <form style="display: flex;" class="search-bar d-flex" method="get" id="site-searchform" action="{% url 'search' %}">
+                        <input value="{{request.GET.search}}" type="search" name="search"  required>
+                        <button class="search-btn" type="submit">
+                            <span>Search</span>
+                        </button>
+                    </form>
+                </div>
+            </div><!-- end container -->
+            
+        </section><!-- end section -->
+
+        <section class="section gb nopadtop">
+            <div class="container">
+                
+                <div class="boxed boxedp4">
+                    <div class="row blog-grid">
+                        {% for news in newses %}
+                        <div class="col-md-4">
+                            <div class="course-box">
+                                <div class="image-wrap entry">
+                                    <a href="{% url 'news_detail' news.category.slug news.id %}"><img style="height: 230px;" src="{{ news.image.url }}" alt="" class="img-responsive"></a>
+                                    <div class="">
+                                         <a href="blog-single.html" title=""></i></a>
+                                    </div>
+                                </div><!-- end image-wrap -->
+                                <div>
+                                    <div style="height: 220px;" class="course-details black">
+                                        <h4>
+                                            <small>Xeber Times</small>
+                                            <a href="{% url 'news_detail' news.category.slug news.id %}" title="">{{news.name}}</a>
+                                        </h4>
+                                        <p>{{news.description | truncatechars:100 }}</p>
+                                    </div><!-- end details -->
+                                    <div class="course-footer clearfix">
+                                        <div class="pull-left">
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-clock-o"></i> {{news.date}}</li>
+                                            </ul>
+                                        </div><!-- end left -->
+                                    </div><!-- end footer -->
+                                </div>
+                            </div><!-- end box -->
+                        </div><!-- end col -->
+                        {% endfor %}
+                    </div><!-- end row -->
+
+                    <hr class="invis">
+
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <!-- <ul class="pagination ">
+                                <li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
+                                <li class="active"><a href="javascript:void(0)">1</a></li>
+                                <li><a href="javascript:void(0)">2</a></li>
+                                <li><a href="javascript:void(0)">3</a></li>
+                                <li><a href="javascript:void(0)">...</a></li>
+                                <li><a href="javascript:void(0)">&raquo;</a></li>
+                            </ul> -->
+
+
+<nav >
+    <ul class="pagination">
+        
+        {% if newses.has_previous %}
+            <li><a href="?page=1">&lang;&lang;</a></li>
+            <li><a href="?page={{ newses.previous_page_number }}">&lang;</a></li>
+        {% endif %}
+
+        <li class="active">
+            <a href="">{{ newses.number }}/{{ newses.paginator.num_pages }}</a> 
+        </li>
+
+        {% if newses.has_next %}
+        <li><a href="?page={{ newses.next_page_number }}">&rang;</a></li>
+        <li><a href="?page={{ newses.paginator.num_pages }}"> &rang;&rang;</a></li>
+        {% endif %}
+    </ul>
+</nav>
+                        </div><!-- end col -->
+                    </div><!-- end row -->
+                </div><!-- end boxed -->
+                
+            </div><!-- end container -->
+        </section>
+
+        {% endblock %}
